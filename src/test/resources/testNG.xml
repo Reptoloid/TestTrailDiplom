@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="TestTrail" parallel="tests" thread-count="1">
+    <test name="TTTest">
+        <parameter name="email" value="pravilodaniil@gmail.com"/>
+        <parameter name="password" value="P12d09a00@"/>
+        <classes>
+            <class name="testTrail.tests.TTTest"/>
+        </classes>
+    </test>
+</suite>
