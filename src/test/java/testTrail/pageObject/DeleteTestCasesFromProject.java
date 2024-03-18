@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 
 import static framework.Browser.getDriver;
 
-public class DashboardCase6 extends BasePage {
+public class DeleteTestCasesFromProject extends BasePage {
     static Faker faker = new Faker();
     static String name = faker.lordOfTheRings().character();
     private WebElement productItem;
@@ -23,21 +23,21 @@ public class DashboardCase6 extends BasePage {
     private static final List<String> PRODUCT_LIST = getDriver().findElements(By.xpath("//div[@class='summary-title text-ppp']"))
             .stream().map(e -> e.getText()).collect(Collectors.toList());
     private static final String OPEN_PROJECT = "//div[@class='summary-title text-ppp']//a[text()='%s']";
-    private static final String OPEN_TESTCASES_PAGE = "//a[@id='navigation-suites']";
-    private static final String TEST_CASE_TABLE = "//div[@class='group grid-container']";
-    private static final String CHOOSE_A_TEST_CASE_FOR_DELETE = "//input[@class='selectionCheckbox']";
-    private static final String DELETE_BUTTON = "//a[@id='deleteCases']";
-    private static final String DELETE_POP_UP = "//div[@id='casesDeletionDialog']//div[@class='button-group dialog-buttons-highlighted']//a[@class='button button-left button-ok button-positive dialog-action-default' and @data-testid='deleteCaseDialogActionDefault']";
-    private static final String ADD_TEST_CASES_BUTTON = "//a[@id='sidebar-cases-add']";
-    private static final String ADD_TITLE_FOR_TEST_CASES = "//input[@class='form-control form-control-full form-fields ']";
-    private static final String CLICK_ON_TYPE_LIST = "//div[@id='type_id_chzn']//a";
-    private static final String ADD_TYPE = "//li[@id='type_id_chzn_o_" + (int) (Math.random() * 11) + "']";
-    private static final String CLICK_ON_PRIORITY_LIST  = "//div[@id='priority_id_chzn']";
-    private static final String ADD_PRIORITY = "//li[@id='priority_id_chzn_o_" +(int) Math.random() * 4 + "']";
-    private static final String ADD_STEPS = "//div[@id='custom_steps_display']";
-    private static final String CREATE_TEST_CASE = "//button[@id='accept']";
-    private static final String BREADCRUMBS_CLICK = "//div[@class='content-breadcrumb']//a";
-    public DashboardCase6() {
+    private static final TextBox OPEN_TESTCASES_PAGE = new TextBox(By.xpath("//a[@id='navigation-suites']")) ;
+    private static final TextBox TEST_CASE_TABLE = new TextBox(By.xpath("//div[@class='group grid-container']")) ;
+    private static final TextBox CHOOSE_A_TEST_CASE_FOR_DELETE = new TextBox(By.xpath("//input[@class='selectionCheckbox']"));
+    private static final Button DELETE_BUTTON = new Button(By.xpath("//a[@id='deleteCases']"));
+    private static final Button DELETE_POP_UP = new Button(By.xpath("//div[@id='casesDeletionDialog']//div[@class='button-group dialog-buttons-highlighted']//a[@class='button button-left button-ok button-positive dialog-action-default' and @data-testid='deleteCaseDialogActionDefault']"));
+    private static final Button ADD_TEST_CASES_BUTTON = new Button(By.xpath("//a[@id='sidebar-cases-add']"));
+    private static final TextBox ADD_TITLE_FOR_TEST_CASES = new TextBox(By.xpath("//input[@class='form-control form-control-full form-fields ']"));
+    private static final TextBox CLICK_ON_TYPE_LIST = new TextBox(By.xpath("//div[@id='type_id_chzn']//a"));
+    private static final TextBox ADD_TYPE = new TextBox(By.xpath("//li[@id='type_id_chzn_o_" + (int) (Math.random() * 11) + "']"));
+    private static final TextBox CLICK_ON_PRIORITY_LIST  = new TextBox(By.xpath("//div[@id='priority_id_chzn']"));
+    private static final TextBox ADD_PRIORITY = new TextBox(By.xpath("//li[@id='priority_id_chzn_o_" +(int) Math.random() * 4 + "']"));
+    private static final TextBox ADD_STEPS = new TextBox(By.xpath("//div[@id='custom_steps_display']"));
+    private static final Button CREATE_TEST_CASE = new Button(By.xpath("//button[@id='accept']"));
+    private static final TextBox BREADCRUMBS_CLICK = new TextBox(By.xpath("//div[@class='content-breadcrumb']//a"));
+    public DeleteTestCasesFromProject() {
         super(By.xpath(PAGE_LOCATOR), "Dashboard");
     }
     @Step("Choose random project")
@@ -54,69 +54,55 @@ public class DashboardCase6 extends BasePage {
     }
     @Step("Open test case page")
     public void clickOnTestCasePage(){
-        TextBox goToTestCasePage = new TextBox(By.xpath(OPEN_TESTCASES_PAGE));
-        goToTestCasePage.click();
+        OPEN_TESTCASES_PAGE.click();
     }
     @Step("Choose the test cases")
      public void setChooseATestCaseForDelete(){
-        TextBox chooseATestCase = new TextBox(By.xpath(CHOOSE_A_TEST_CASE_FOR_DELETE));
-        chooseATestCase.click();
+        CHOOSE_A_TEST_CASE_FOR_DELETE.click();
     }
     @Step("Click on delete button ")
     public void clickOnDeleteButton(){
-        Button clickOnDeleteButton = new Button(By.xpath(DELETE_BUTTON));
-        clickOnDeleteButton.click();
+        DELETE_BUTTON.click();
     }
     @Step("Click on delete button in pop up")
     public void clickOnDeletePopUp(){
-        Button clickOnPopUp = new Button(By.xpath(DELETE_POP_UP));
-        clickOnPopUp.click();
+        DELETE_POP_UP.click();
     }
     @Step("Create a test case")
     public void addTestCase() {
-        Button addTestCasesButton = new Button(By.xpath(ADD_TEST_CASES_BUTTON));
-        addTestCasesButton.click();
+        ADD_TEST_CASES_BUTTON.click();
     }
     @Step("Add title for test case")
     public void addTitleForCase() {
-        TextBox addTitle = new TextBox(By.xpath(ADD_TITLE_FOR_TEST_CASES));
-        addTitle.sendKeys(name);
+        ADD_TITLE_FOR_TEST_CASES.sendKeys(name);
     }
     @Step("Add type for test case")
     public void addType(){
-        TextBox clickOnTypeList = new TextBox(By.xpath(CLICK_ON_TYPE_LIST));
-        clickOnTypeList.click();
-        TextBox addType = new TextBox(By.xpath(ADD_TYPE));
-        addType.click();
+        CLICK_ON_TYPE_LIST.click();
+        ADD_TYPE.click();
     }
     @Step("Add priority for test case")
     public void addPriority(){
-        TextBox clickOnPriorityList = new TextBox(By.xpath(CLICK_ON_PRIORITY_LIST));
-        clickOnPriorityList.click();
-        TextBox addPriority = new TextBox(By.xpath(ADD_PRIORITY));
-        addPriority.click();
+        CLICK_ON_PRIORITY_LIST.click();
+        ADD_PRIORITY.click();
     }
     @Step("Add steps for test case")
     public void addSteps(){
-        TextBox addSteps = new TextBox(By.xpath(ADD_STEPS));
-        addSteps.scrollIntoView();
-        addSteps.sendKeys("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam rutrum dolor vitae luctus ");
+        ADD_STEPS.scrollIntoView();
+        ADD_STEPS.sendKeys("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam rutrum dolor vitae luctus ");
     }
     @Step("Cleck on create button")
     public void clickOnCreateNewTestCase(){
-        Button addTestCaseButton = new Button(By.xpath(CREATE_TEST_CASE));
-        addTestCaseButton.scrollIntoView();
-        addTestCaseButton.clickAndWait();
+        CREATE_TEST_CASE.scrollIntoView();
+        CREATE_TEST_CASE.clickAndWait();
     }
     @Step("Click on breadcrumbs link  ")
     public void setBreadcrumbsClick(){
-        TextBox breadcrunbs = new TextBox(By.xpath(BREADCRUMBS_CLICK));
-        breadcrunbs.clickAndWait();
+        BREADCRUMBS_CLICK.clickAndWait();
     }
     @Step("Check test case for delete")
     public void checkTestCaseTable(){
-        TextBox testCaseTable = new TextBox(By.xpath(TEST_CASE_TABLE));
-        if (testCaseTable.isElementPresent()){
+        if (TEST_CASE_TABLE.isElementPresent()){
             addTestCase();
             addTitleForCase();
             addType();

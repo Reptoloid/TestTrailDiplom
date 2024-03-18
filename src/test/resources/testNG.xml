@@ -5,7 +5,13 @@
         <parameter name="email" value="pravilodaniil@gmail.com"/>
         <parameter name="password" value="P12d09a00@"/>
         <classes>
-            <class name="testTrail.tests.TTTest"/>
+            <class name="testTrail.tests.TTTestCase1"/>
+            <class name="testTrail.tests.TTTestCase2"/>
+            <class name="testTrail.tests.TTTestCase3"/>
+            <class name="testTrail.tests.TTTestCase4"/>
+            <class name="testTrail.tests.TTTestCase5"/>
+            <class name="testTrail.tests.TTTestCase6"/>
+            <class name="testTrail.tests.TTTestCase7"/>
         </classes>
     </test>
 </suite>

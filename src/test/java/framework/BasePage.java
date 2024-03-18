@@ -3,6 +3,7 @@ package framework;
 import framework.elements.Label;
 import org.openqa.selenium.By;
 import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 import java.util.Date;
 
@@ -12,6 +13,7 @@ public class BasePage {
     protected String title;
     protected By titleLocator;
     protected PropertyReader propertyReader = new PropertyReader("log.properties");
+    protected SoftAssert softAssert = new SoftAssert();
     public BasePage(final By locator, final String pageTitle) {
         init(locator, pageTitle);
         assertIsOpen();
@@ -32,4 +34,5 @@ public class BasePage {
             Assert.assertTrue(true, title + " does not open");
         }
     }
+
 }
