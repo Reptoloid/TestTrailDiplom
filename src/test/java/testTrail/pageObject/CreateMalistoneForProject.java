@@ -88,6 +88,7 @@ public class CreateMalistoneForProject extends BasePage {
         createAMilestone();
         addNewMilestoneButton();
         checkCreationMilestone();
+        softAssert.assertAll();
     }
 
 }

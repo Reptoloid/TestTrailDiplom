@@ -42,6 +42,7 @@ public class CreateNewProjectFromDashboardPage extends BasePage {
         setProjectName();
         clickOnCreateNewProject();
         checkProjectCreation();
+        softAssert.assertAll();
     }
 
 }

@@ -105,6 +105,7 @@ public class CreateNewTestCaseForProject extends BasePage {
         addSteps();
         clickOnCreateNewTestCase();
         checkTestCaseCreation();
+        softAssert.assertAll();
     }
 
 }

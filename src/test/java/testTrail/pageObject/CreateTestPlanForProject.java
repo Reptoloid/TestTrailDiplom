@@ -77,5 +77,6 @@ public class CreateTestPlanForProject extends BasePage {
         setNameForTestPlan();
         addPlanButton();
         creationCheck();
+        softAssert.assertAll();
     }
 }
